@@ -18,5 +18,5 @@ public class BOGameStartActivity extends Activity {
 		getMenuInflater().inflate(R.menu.activity_bogame_start, menu);
 		return true;
 	}
-
+	
 }
