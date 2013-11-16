@@ -14,7 +14,10 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.ListView;
+import android.widget.Button;
 
 //创建热点，搜索wifi页面
 public class BOGameConnectActivity extends BOActivityAbstract implements WifiBroadCastOperations {
@@ -22,6 +25,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	private List<ScanResult> wifiList;
 	private WifiHotManager WifiHotM;
 	private ListView listView;
+	private Button scanHotsBtn;
 	private WifiHotAdapter adapter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,13 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		 */
 		listView = (ListView) findViewById(R.id.listHots);
 		
+		scanHotsBtn = (Button) findViewById(R.id.flashHot);
+		scanHotsBtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				WifiHotM.scanWifiHot();
+			}
+		});
 	}
 	
 	protected void onResume(){

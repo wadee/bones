@@ -32,6 +32,15 @@
             android:layout_marginLeft="15dp"
             android:text="创建热点" >
         </Button>
+
+        <Button
+            android:id="@+id/flashHot"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="刷新列表" />
+
     </RelativeLayout>
     
 </LinearLayout>
