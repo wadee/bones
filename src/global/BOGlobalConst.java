@@ -10,6 +10,8 @@ public class BOGlobalConst {
 
 	public static String INT_CLIENT_SUCCESS = "INTCLIENT_SUCCESS";
 	
+	//热点名
+	public static String SSID = "YRCCONNECTION";
 	//热点创建密码
 	public static String PASSWORD = "2012110312123";
 	
