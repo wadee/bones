@@ -12,6 +12,8 @@ import android.view.Menu;
 import android.widget.EditText;
 import controller.BOActivityAbstract;
 import controller.Activity.R;
+import data.read.BODrUser;
+import data.write.BODwUser;
 
 //游戏入口
 public class BOGameEntranceActivity extends BOActivityAbstract {
@@ -28,6 +30,8 @@ public class BOGameEntranceActivity extends BOActivityAbstract {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_entrance);
 		
+		//BODrUser druser = new BODrUser();
+		//String name = druser.getUserName();
 		//判断用户是否已注册，如未注册弹出注册层
 		signdialog();
 		
@@ -45,6 +49,8 @@ public class BOGameEntranceActivity extends BOActivityAbstract {
 			public void onClick(DialogInterface dialog, int which) {
 				String sign_name = signname.getText().toString();
 				//将用户输入数据存入本地
+				/*BODwUser dwuser = new BODwUser();
+				dwuser.insertUserName(sign_name);*/
 			}
 		});
 		 builder.setNegativeButton("取消", null);
