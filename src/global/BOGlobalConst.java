@@ -15,4 +15,6 @@ public class BOGlobalConst {
 	//热点创建密码
 	public static String PASSWORD = "2012110312123";
 	
+	public static int PORT = 362573;
+	
 }

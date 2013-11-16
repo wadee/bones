@@ -2,7 +2,6 @@ package controller.Activity;
 
 import java.util.List;
 
-
 import global.BOGlobalConst;
 
 import tools.Wifi.WifiHotAdapter;
@@ -12,10 +11,13 @@ import tools.Wifi.WifiHotManager.WifiBroadCastOperations;
 
 import tools.Wifi.WifiHotManager;
 
+import tools.Socket.SocketClient;
 import controller.BOActivityAbstract;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,12 +36,16 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	private Button scanHotsBtn;
 	private WifiHotAdapter adapter;
 	private String mSSID;
+	private Handler clientHandler;
+	private SocketClient client;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_connect);
+		
+		initClientHandler();
 		/**
 		 * 搜索热点开始
 		 */
@@ -113,6 +119,22 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		} else {
 			adapter.refreshData(results);
 		}
+	}
+	
+	private void initClientHandler() {
+		clientHandler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				Log.i(TAG, "into initClientHandler() handleMessage(Message msg)");
+				if (msg.what == 0) {
+					Toast.makeText(BOGameConnectActivity.this, "连接失败", Toast.LENGTH_SHORT).show();
+				} else {
+					Toast.makeText(BOGameConnectActivity.this, "连接成功", Toast.LENGTH_SHORT).show();
+					String text = (String) msg.obj;
+					Log.i(TAG, "into initClientHandler() handleMessage(Message msg) text =" + text);
+				}
+			}
+		};
 	}
 	
 }
