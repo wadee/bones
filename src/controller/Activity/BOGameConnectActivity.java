@@ -2,6 +2,9 @@ package controller.Activity;
 
 import java.util.List;
 
+
+import global.BOGlobalConst;
+
 import tools.Wifi.WifiHotAdapter;
 
 import tools.Wifi.WifiHotManager.OpretionsType;
@@ -16,8 +19,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.Toast;
 
 //创建热点，搜索wifi页面
 public class BOGameConnectActivity extends BOActivityAbstract implements WifiBroadCastOperations {
@@ -27,16 +33,31 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	private ListView listView;
 	private Button scanHotsBtn;
 	private WifiHotAdapter adapter;
+	private String mSSID;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_connect);
-		
 		/**
 		 * 搜索热点开始
 		 */
+		
 		listView = (ListView) findViewById(R.id.listHots);
+		listView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				// TODO Auto-generated method stub
+				ScanResult result = wifiList.get(position);
+				mSSID = result.SSID;
+				Toast.makeText(BOGameConnectActivity.this, result.SSID, Toast.LENGTH_SHORT).show();
+				WifiHotM.connectToHotpot(mSSID, wifiList, BOGlobalConst.PASSWORD);
+			}
+			
+		});
 		
 		scanHotsBtn = (Button) findViewById(R.id.flashHot);
 		scanHotsBtn.setOnClickListener(new OnClickListener() {
@@ -45,6 +66,8 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 				WifiHotM.scanWifiHot();
 			}
 		});
+		
+		
 	}
 	
 	protected void onResume(){
@@ -64,12 +87,22 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	@Override
 	public boolean disPlayWifiConResult(boolean result, WifiInfo wifiInfo) {
 		// TODO Auto-generated method stub
+		WifiHotM.setConnectStatu(false);
+		WifiHotM.unRegisterWifiStateBroadCast();
+		WifiHotM.unRegisterWifiConnectBroadCast();
+		Toast.makeText(BOGameConnectActivity.this, wifiInfo.getSSID(), Toast.LENGTH_SHORT).show();
+//		initClient(ip);
 		return false;
 	}
 
 	@Override
 	public void operationByType(OpretionsType type, String SSID) {
 		// TODO Auto-generated method stub
+		if (type == OpretionsType.CONNECT) {
+			WifiHotM.connectToHotpot(SSID, wifiList, BOGlobalConst.PASSWORD);
+		} else if (type == OpretionsType.SCAN) {
+			WifiHotM.scanWifiHot();
+		}
 		
 	}
 	

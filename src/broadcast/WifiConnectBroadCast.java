@@ -45,6 +45,7 @@ public class WifiConnectBroadCast extends BroadcastReceiver {
 					Log.e("APActivity", "CONNECTING");
 					break;
 				case DISCONNECTED:
+					operations.disPlayWifiConResult(false, wifiInfo);
 					Log.e("APActivity", "DISCONNECTED");
 					break;
 				case DISCONNECTING:
