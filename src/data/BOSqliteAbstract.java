@@ -19,32 +19,30 @@ abstract public class BOSqliteAbstract {
 	public final int DB_READ = 1;
 	public final int DB_WRITE = 2;
 	
-	
-	//表名
+	//库名
 	public String query = "";
 	
-	//构造函数
-	public void BOSqliteAbstract(Context context) throws Exception{
-		Log.i("数据基类","数据基类");
-		if(query!=""){
-			//创建一个DatabaseHelper对象
-			DatabaseHelper dbHelper = new DatabaseHelper(context,query);
-		}else {
-			throw new Exception("invalid table name");
-		}
-		//读写分开
-		switch (db_type) {
-		case DB_READ:
-			//只有调用了DatabaseHelper对象的getReadableDatabase()方法，或者是getWritableDatabase()方法之后，才会创建，或打开一个数据库
-			db = dbHelper.getReadableDatabase();
-			break;
-		case DB_WRITE:
-			db = dbHelper.getWritableDatabase();
-			break;
-		default:
-			throw new Exception("invalue db type");
-		}
-		
-	}
+	
+	 public void init(Context context)  throws Exception{
+		 Log.i("query", this.query);
+		 if(this.query!=""){
+				//创建一个DatabaseHelper对象
+				dbHelper = new DatabaseHelper(context,query);
+			}else {
+				throw new Exception("invalid table name");
+			}
+			//读写分开
+			switch (this.db_type) {
+			case DB_READ:
+				//只有调用了DatabaseHelper对象的getReadableDatabase()方法，或者是getWritableDatabase()方法之后，才会创建，或打开一个数据库
+				db = dbHelper.getReadableDatabase();
+				break;
+			case DB_WRITE:
+				db = dbHelper.getWritableDatabase();
+				break;
+			default:
+				throw new Exception("invalue db type");
+			}
+	 };
 	
 }
