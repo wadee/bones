@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import tools.Wifi.WifiApplication;
+
 import tools.Socket.SocketClient.ClientMsgListener;
 
 import tools.Socket.SocketServer;
@@ -20,7 +22,9 @@ import tools.Wifi.WifiHotManager;
 
 import tools.Socket.SocketClient;
 import controller.BOActivityAbstract;
+import android.app.Application;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.os.Bundle;
@@ -63,6 +67,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		/**
 		 * 热点列表
 		 */
+		
 		listView = (ListView) findViewById(R.id.listHots);
 		listView.setOnItemClickListener(new OnItemClickListener(){
 
@@ -142,7 +147,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		WifiHotM.setConnectStatu(false);
 		WifiHotM.unRegisterWifiStateBroadCast();
 		WifiHotM.unRegisterWifiConnectBroadCast();
-		Toast.makeText(BOGameConnectActivity.this, wifiInfo.getSSID(), Toast.LENGTH_SHORT).show();
+		Toast.makeText(BOGameConnectActivity.this, wifiInfo.getIpAddress(), Toast.LENGTH_SHORT).show();
 		initClient("");
 		return false;
 	}
@@ -177,8 +182,11 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 					Toast.makeText(BOGameConnectActivity.this, "连接失败", Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(BOGameConnectActivity.this, "连接成功", Toast.LENGTH_SHORT).show();
-					String text = (String) msg.obj;
-					Log.i(TAG, "into initClientHandler() handleMessage(Message msg) text =" + text);
+					/**
+					 * client连接成功后，跳转到ReadyActivity
+					 */
+					saveData();
+					gotoReadyActivity();
 				}
 			}
 		};
@@ -194,6 +202,11 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 				} else {
 					String text = (String) msg.obj;
 					Toast.makeText(BOGameConnectActivity.this, "创建成功", Toast.LENGTH_SHORT).show();
+					/**
+					 * 创建server后跳转到ReadyActivity
+					 */
+					saveData();
+					gotoReadyActivity();
 					Log.i(TAG, "into initServerHandler() handleMessage(Message msg) text = " + text);
 				}
 			}
@@ -201,7 +214,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	}
 	
 	private void initServer() {
-		server = SocketServer.newInstance(12345, new ServerMsgListener() {
+		server = SocketServer.newInstance(BOGlobalConst.PORT, new ServerMsgListener() {
 			Message msg = null;
 
 			@Override
@@ -227,7 +240,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		server.beginListen();
 	}
 	private void initClient(String IP) {
-		client = SocketClient.newInstance("192.168.43.1", 12345, new ClientMsgListener() {
+		client = SocketClient.newInstance("192.168.43.1", BOGlobalConst.PORT, new ClientMsgListener() {
 
 			Message msg = null;
 
@@ -250,10 +263,24 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 				msg.obj = hotMsg;
 				msg.what = 1;
 				clientHandler.sendMessage(msg);
-
 			}
 		});
 		client.connectServer();
+	}
+	
+	private void gotoReadyActivity(){
+		Intent intent = new Intent();
+		intent.setClass(this, BOGameReadyActivity.class);
+		this.startActivity(intent);
+	}
+	
+	private void saveData(){
+		WifiApplication app = (WifiApplication) this.getApplication();
+		app.client = this.client;
+		app.server = this.server;
+		app.wifiHotM = this.WifiHotM;
+		app.tag = "有话好好说";
+		Log.i("application", app.toString());
 	}
 	
 }

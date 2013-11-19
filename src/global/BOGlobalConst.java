@@ -13,8 +13,8 @@ public class BOGlobalConst {
 	//热点名
 	public static String SSID = "YRCCONNECTION";
 	//热点创建密码
-	public static String PASSWORD = "2012110312123";
+	public static String PASSWORD = "123456789";
 	
-	public static int PORT = 362573;
+	public static int PORT = 12321;
 	
 }

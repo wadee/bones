@@ -55,6 +55,8 @@ public class WifiHotAdmin {
 			method1 = mWifiManager.getClass().getMethod("setWifiApEnabled", WifiConfiguration.class, boolean.class);
 			WifiConfiguration apConfig = createPassHotWifiConfig(wifiName, BOGlobalConst.PASSWORD);
 			ret = (Boolean) method1.invoke(mWifiManager, apConfig, true);
+			Log.i("statAP", ret + "");
+//			Log.i("serverAP", mWifiManager.getDhcpInfo().toString());
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 			Log.d(TAG, "stratWifiAp() IllegalArgumentException e");
@@ -132,7 +134,7 @@ public class WifiHotAdmin {
 		config.allowedProtocols.clear();
 
 		config.SSID = mSSID;
-		config.wepKeys[0] = mPasswd;
+		config.wepKeys[0] = "" + mPasswd + "";
 		config.allowedAuthAlgorithms.set(WifiConfiguration.AuthAlgorithm.SHARED);
 		config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.CCMP);
 		config.allowedGroupCiphers.set(WifiConfiguration.GroupCipher.TKIP);
