@@ -22,14 +22,13 @@ abstract public class BOSqliteAbstract {
 	//库名
 	public String query = "";
 	
-	
 	 public void init(Context context)  throws Exception{
 		 Log.i("query", this.query);
 		 if(this.query!=""){
 				//创建一个DatabaseHelper对象
 				dbHelper = new DatabaseHelper(context,query);
 			}else {
-				throw new Exception("invalid table name");
+				throw new Exception("invalid query name");
 			}
 			//读写分开
 			switch (this.db_type) {

@@ -31,18 +31,10 @@ public class BODrUser extends BOSqliteAbstract{
 	
 	//获取用户名
 		public String getUserName(){
-			
-			try {
-				this.cursor = this.db.query("user", new String[]{"name"}, "name=?", new String[]{"1"}, null, null, null);
-			} catch (Exception e) {
-				Log.i("here", e.getMessage());
-				// TODO: handle exception
-			}
+			this.cursor = this.db.query("user", new String[]{"id","name"}, "id=?", new String[]{"1"}, null, null, null);
 			while(this.cursor.moveToNext()){
 				this.name = this.cursor.getString(cursor.getColumnIndex("name"));
-				Log.i("sdafasdfasd", "123123");
 			}
-			Log.i("名字", "asdfasdf");
-			return "abc";
+			return this.name;
 		} 
 }
