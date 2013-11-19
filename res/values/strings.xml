@@ -7,6 +7,10 @@
     <string name="entrance_menu_quit">退出</string>
     <string name="connect_menu_ltit">请选择要连接的热点：</string>
     <string name="connect_menu_licon">热点连接列表图标：</string>
+    <string name="ready_menu_host">房主：</string>
+    <string name="ready_menu_rule">规则：</string>
+    <string name="ready_menu_play">开始</string>
+    <string name="ready_menu_guest">参与者：</string>
     <string name="end_menu_playagain">再玩一局</string>
     <string name="end_menu_returnhome">返回</string>
     
