@@ -41,6 +41,7 @@ public class SocketClient {
 			ClientMsgListener clientListener) {
 
 		if (socketClient == null) {
+			Log.i("socketclient",site + port);
 			socketClient = new SocketClient(site, port, clientListener);
 		}
 		Log.i(TAG, "socketClient =" + socketClient);
@@ -76,7 +77,7 @@ public class SocketClient {
 				} catch (IOException e) {
 					e.printStackTrace();
 					clientListener.handlerErorMsg(BOGlobalConst.INT_CLIENT_FAIL);
-					Log.d(TAG, "IOException");
+					Log.d(TAG, e.toString());
 				}
 			}
 		}).start();
@@ -99,7 +100,7 @@ public class SocketClient {
 					}
 				} catch (IOException e) {
 					e.printStackTrace();
-					Log.d(TAG, "client snedMsg error!");
+					Log.d(TAG, "client sendMsg error!");
 				}
 			}
 		}).start();

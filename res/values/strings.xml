@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bones</string>
+<<<<<<< HEAD
     <string name="hello_world">Hello world!</string>
     <string name="entrance_menu_settings">设置</string>
     <string name="entrance_menu_start">开始游戏</string>
@@ -14,4 +15,8 @@
     <string name="end_menu_playagain">再玩一局</string>
     <string name="end_menu_returnhome">返回</string>
     
+=======
+    <string name="waitforconn">等待玩家连接中</string>
+    <string name="menu_settings">Settings</string>
+>>>>>>> remotes/origin/connect_v1.0
 </resources>

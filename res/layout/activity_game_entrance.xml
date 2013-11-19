@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:padding="20dip" >
 
-    <!-- 甯冨眬鍙互宓屽 -->
+    <!-- 布局可以嵌套 -->
 
     <LinearLayout
         android:layout_width="fill_parent"

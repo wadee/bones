@@ -45,5 +45,43 @@
            ></Button>
        </LinearLayout>
     
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="8.0" >
 
+        <ListView
+            android:id="@+id/listHots"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </ListView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/createHotLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="1.0" >
+
+        <Button
+            android:id="@+id/createHot"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:text="创建热点" >
+        </Button>
+
+        <Button
+            android:id="@+id/flashHot"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="刷新列表" />
+
+    </RelativeLayout>
+    
 </LinearLayout>
