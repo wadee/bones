@@ -1,5 +1,6 @@
 package controller.Activity;
 
+import global.BOGlobalUserinfo;
 import android.R.string;
 import android.os.Bundle;
 import android.app.Activity;
@@ -25,15 +26,30 @@ public class BOGameEntranceActivity extends BOActivityAbstract {
 	
 	public EditText signname;
 	
+	public BODwUser dwuser;
+	
+	public String name;
+	
+	public BODrUser druser;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game_entrance);
 		
-		//BODrUser druser = new BODrUser();
-		//String name = druser.getUserName();
+		druser = new BODrUser(BOGameEntranceActivity.this);
+		name = druser.getUserName();
 		//判断用户是否已注册，如未注册弹出注册层
-		signdialog();
+		if(name==null){
+			signdialog();
+			druser = new BODrUser(BOGameEntranceActivity.this);
+			name = druser.getUserName();
+		}
+		
+		//将名字放到全局变量中
+		BOGlobalUserinfo.setUserName(name);
+		
+		
 		
 	}
 	
@@ -49,8 +65,11 @@ public class BOGameEntranceActivity extends BOActivityAbstract {
 			public void onClick(DialogInterface dialog, int which) {
 				String sign_name = signname.getText().toString();
 				//将用户输入数据存入本地
-				/*BODwUser dwuser = new BODwUser();
-				dwuser.insertUserName(sign_name);*/
+				dwuser = new BODwUser(BOGameEntranceActivity.this);
+				dwuser.insertUserName(sign_name);
+				
+				BODrUser druser = new BODrUser(BOGameEntranceActivity.this);
+				String name = druser.getUserName();
 			}
 		});
 		 builder.setNegativeButton("取消", null);
