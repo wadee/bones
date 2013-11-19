@@ -11,10 +11,22 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
+        public static final int con_list_icon=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
     }
     public static final class id {
-        public static final int menu_settings=0x7f070000;
+        public static final int app_logo=0x7f070006;
+        public static final int app_quit=0x7f070008;
+        public static final int app_setting=0x7f070005;
+        public static final int app_start=0x7f070007;
+        public static final int list_icon=0x7f070009;
+        public static final int listitem_title=0x7f07000a;
+        public static final int menu_settings=0x7f07000b;
+        public static final int play_again=0x7f070002;
+        public static final int return_home=0x7f070004;
+        public static final int show_result=0x7f070003;
+        public static final int wifi_list=0x7f070001;
+        public static final int wifi_text=0x7f070000;
     }
     public static final class layout {
         public static final int activity_game_connect=0x7f030000;
@@ -22,14 +34,21 @@ public final class R {
         public static final int activity_game_entrance=0x7f030002;
         public static final int activity_game_play=0x7f030003;
         public static final int activity_game_ready=0x7f030004;
+        public static final int game_connect_listview=0x7f030005;
     }
     public static final class menu {
         public static final int activity_bogame_start=0x7f060000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int connect_menu_licon=0x7f040006;
+        public static final int connect_menu_ltit=0x7f040005;
+        public static final int end_menu_playagain=0x7f040007;
+        public static final int end_menu_returnhome=0x7f040008;
+        public static final int entrance_menu_quit=0x7f040004;
+        public static final int entrance_menu_settings=0x7f040002;
+        public static final int entrance_menu_start=0x7f040003;
         public static final int hello_world=0x7f040001;
-        public static final int menu_settings=0x7f040002;
     }
     public static final class style {
         /** 

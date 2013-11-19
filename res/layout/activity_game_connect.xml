@@ -1,8 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical" >
+    <LinearLayout
+         android:layout_width="fill_parent"
+   		 android:layout_height="wrap_content"
+   		 android:layout_weight="1"
+   >
+    <TextView
+    	    android:id="@+id/wifi_text"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:text="@string/connect_menu_ltit"
+    	    android:paddingTop="10dip"
+    	    android:textSize="20sp"
+    	    ></TextView>
+    </LinearLayout>
+	<LinearLayout
+         android:layout_width="fill_parent"
+   		 android:layout_height="wrap_content"
+   		 android:layout_weight="6"
+   		 android:orientation="horizontal"
+         android:gravity="center"
+   >
+       <ListView 
+		android:id="@+id/wifi_list"
+		android:layout_width="fill_parent"
+		android:layout_height="300sp"
+		android:drawSelectorOnTop="false"
+		android:scrollbars="vertical"
+	></ListView>
+       </LinearLayout>
+    <LinearLayout
+         android:layout_width="fill_parent"
+   		 android:layout_height="wrap_content"
+   		 android:orientation="horizontal"
+   		 android:layout_weight="3"
+   >
+       <Button 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           ></Button>
+       </LinearLayout>
     
 
 </LinearLayout>

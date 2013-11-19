@@ -2,6 +2,12 @@
 <resources>
     <string name="app_name">Bones</string>
     <string name="hello_world">Hello world!</string>
-    <string name="menu_settings">Settings</string>
-    <string name="menu_settingss">Settingss</string>
+    <string name="entrance_menu_settings">设置</string>
+    <string name="entrance_menu_start">开始游戏</string>
+    <string name="entrance_menu_quit">退出</string>
+    <string name="connect_menu_ltit">请选择要连接的热点：</string>
+    <string name="connect_menu_licon">热点连接列表图标：</string>
+    <string name="end_menu_playagain">再玩一局</string>
+    <string name="end_menu_returnhome">返回</string>
+    
 </resources>
