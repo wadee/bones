@@ -1,5 +1,6 @@
 package controller.Activity;
 
+import global.BOGlobalUserinfo;
 import tools.Socket.SocketServer.ServerMsgListener;
 
 import tools.Socket.SocketClient.ClientMsgListener;
@@ -34,9 +35,9 @@ public class BOGameReadyActivity extends BOActivityAbstract {
 		app = (WifiApplication) this.getApplication();
 		
 		TextView youselfView = (TextView) findViewById(R.id.ready_host);
-		youselfView.setText(app.tag);
+		youselfView.setText(BOGlobalUserinfo.name);
 		TextView otherView = (TextView) findViewById(R.id.ready_guest);
-		otherView.setText("玩家2");
+		otherView.setText("等待玩家中");
 		
 		initServerHandler();
 		initClientHandler();

@@ -6,39 +6,38 @@
     <LinearLayout
          android:layout_width="fill_parent"
    		 android:layout_height="wrap_content"
-   		 android:layout_weight="1"
-   >
+   		 android:layout_weight="1">
+
     <TextView
     	    android:id="@+id/wifi_text"
     	    android:layout_width="match_parent"
-    	    android:layout_height="wrap_content"
+    	    android:layout_height="40dip"
     	    android:text="@string/connect_menu_ltit"
     	    android:paddingTop="10dip"
     	    android:textSize="20sp"
     	    ></TextView>
     </LinearLayout>
-	<LinearLayout
-         android:layout_width="fill_parent"
-   		 android:layout_height="wrap_content"
-   		 android:layout_weight="6"
-   		 android:orientation="horizontal"
-         android:gravity="center"
-   >
-       <ListView 
-		android:id="@+id/wifi_list"
-		android:layout_width="fill_parent"
-		android:layout_height="300sp"
-		android:drawSelectorOnTop="false"
-		android:scrollbars="vertical"
-	></ListView>
-       </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.57"
+        android:gravity="center" >
+
+        <ListView
+            android:id="@+id/wifi_list"
+            android:layout_width="fill_parent"
+            android:layout_height="300dip"
+            android:drawSelectorOnTop="false"
+            android:scrollbars="vertical" >
+        </ListView>
+    </LinearLayout>
     
     <RelativeLayout
         android:id="@+id/createHotLayout"
         android:layout_width="fill_parent"
-        android:layout_height="0.0dp"
-        android:layout_marginBottom="20dp"
-        android:layout_weight="1.0" >
+        android:layout_height="40dip"
+        android:layout_marginBottom="20dp" >
 
         <Button
             android:id="@+id/createHot"

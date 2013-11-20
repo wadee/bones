@@ -12,6 +12,7 @@ import tools.Socket.SocketServer;
 import tools.Socket.SocketServer.ServerMsgListener;
 
 import global.BOGlobalConst;
+import global.BOGlobalUserinfo;
 
 import tools.Wifi.WifiHotAdapter;
 
@@ -37,6 +38,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 //创建热点，搜索wifi页面
@@ -104,7 +106,8 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				WifiHotM.startAWifiHot("WIFI-TEST");
+				String WIFI_NAME = BOGlobalUserinfo.name + "_bones";
+				WifiHotM.startAWifiHot(WIFI_NAME);
 				initServer();
 			}
 			

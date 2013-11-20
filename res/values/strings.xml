@@ -5,7 +5,7 @@
     <string name="entrance_menu_settings">设置</string>
     <string name="entrance_menu_start">开始游戏</string>
     <string name="entrance_menu_quit">退出</string>
-    <string name="connect_menu_ltit">请选择要连接的热点：</string>
+    <string name="connect_menu_ltit">请选择要连接的玩家：</string>
     <string name="connect_menu_licon">热点连接列表图标：</string>
     <string name="ready_menu_host">房主：</string>
     <string name="ready_menu_rule">规则：</string>
