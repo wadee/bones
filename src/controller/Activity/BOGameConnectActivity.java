@@ -281,8 +281,6 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		app.client = this.client;
 		app.server = this.server;
 		app.wifiHotM = this.WifiHotM;
-		app.tag = "有话好好说";
-		Log.i("application", app.toString());
 	}
 	
 }
