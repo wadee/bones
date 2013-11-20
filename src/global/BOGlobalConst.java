@@ -18,6 +18,6 @@ public class BOGlobalConst {
 	public static String SUFFIX = "_bones";
 	
 	
-	public static int PORT = 12321;
+	public static int PORT = 12345;
 	
 }

@@ -82,7 +82,6 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 				Toast.makeText(BOGameConnectActivity.this, result.SSID, Toast.LENGTH_SHORT).show();
 				WifiHotM.connectToHotpot(mSSID, wifiList, BOGlobalConst.PASSWORD);
 			}
-			
 		});
 		
 		/**
@@ -122,6 +121,32 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		super.onResume();
 	}
 
+	@Override
+	protected void onDestroy() {
+		Log.i(TAG, "into onDestroy() ");
+		if (adapter != null) {
+			adapter.clearData();
+			adapter = null;
+		}
+		if (server != null) {
+			server.clearServer();
+			server.stopListner();
+			server = null;
+			WifiHotM.disableWifiHot();
+
+		}
+		if (client != null) {
+			client.clearClient();
+			client.stopAcceptMessage();
+			client = null;
+			WifiHotM.deleteMoreCon(mSSID);
+		}
+		// ？
+		System.exit(0);
+		Log.i(TAG, "out onDestroy() ");
+		super.onDestroy();
+	}
+	
 	@Override
 	public void disPlayWifiScanResult(List<ScanResult> wifiList) {
 		// TODO Auto-generated method stub
@@ -180,7 +205,6 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 			public void handleMessage(Message msg) {
 				Log.i(TAG, "into initClientHandler() handleMessage(Message msg)");
 				if (msg.what == 0) {
-					Log.i("client", "fail");
 					Toast.makeText(BOGameConnectActivity.this, "连接失败", Toast.LENGTH_SHORT).show();
 				} else {
 					Toast.makeText(BOGameConnectActivity.this, "连接成功", Toast.LENGTH_SHORT).show();
@@ -254,7 +278,6 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 				msg.obj = errorMsg;
 				msg.what = 0;
 				clientHandler.sendMessage(msg);
-
 			}
 
 			@Override
