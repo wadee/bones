@@ -106,7 +106,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String WIFI_NAME = BOGlobalUserinfo.name + "_bones";
+				String WIFI_NAME = BOGlobalUserinfo.name + BOGlobalConst.SUFFIX;
 				WifiHotM.startAWifiHot(WIFI_NAME);
 				initServer();
 			}
@@ -131,7 +131,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		ArrayList<ScanResult> new_wifilist = new ArrayList<ScanResult>();
 		while(it.hasNext()){
 			ScanResult cur = it.next();
-			if(!ssid_list.contains(cur.SSID)){
+			if(!ssid_list.contains(cur.SSID) && cur.SSID.endsWith(BOGlobalConst.SUFFIX)){
 				ssid_list.add(cur.SSID);
 				new_wifilist.add(cur);
 			}else{
@@ -150,7 +150,6 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		WifiHotM.setConnectStatu(false);
 		WifiHotM.unRegisterWifiStateBroadCast();
 		WifiHotM.unRegisterWifiConnectBroadCast();
-		Toast.makeText(BOGameConnectActivity.this, wifiInfo.getIpAddress(), Toast.LENGTH_SHORT).show();
 		initClient("");
 		return false;
 	}

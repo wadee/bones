@@ -50,7 +50,6 @@ public class BOGameEntranceActivity extends BOActivityAbstract {
 		druser = new BODrUser(BOGameEntranceActivity.this);
 		name = druser.getUserName();
 		//判断用户是否已注册，如未注册弹出注册层
-		Log.i("name", name);
 		if(name==null){
 			signdialog();
 			druser = new BODrUser(BOGameEntranceActivity.this);

@@ -14,6 +14,9 @@ public class BOGlobalConst {
 	public static String SSID = "YRCCONNECTION";
 	//热点创建密码
 	public static String PASSWORD = "123456789";
+	//热点SSID后缀
+	public static String SUFFIX = "_bones";
+	
 	
 	public static int PORT = 12321;
 	

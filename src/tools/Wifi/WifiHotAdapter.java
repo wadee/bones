@@ -53,9 +53,7 @@ public class WifiHotAdapter extends BaseAdapter {
 			convertView = View.inflate(mContext, R.layout.wifihot_layout, null);
 		}
 		nameTxt = (TextView) convertView.findViewById(R.id.hotName);
-		levelTxt = (TextView) convertView.findViewById(R.id.hotLevel);
 		nameTxt.setText(mResults.get(position).SSID);
-		levelTxt.setText("Level :" + mResults.get(position).level);
 		System.out.println("out getView()");
 		return convertView;
 	}
