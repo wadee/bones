@@ -33,9 +33,9 @@ public class BOGameReadyActivity extends BOActivityAbstract {
 		
 		app = (WifiApplication) this.getApplication();
 		
-		TextView youselfView = (TextView) findViewById(R.id.youself);
+		TextView youselfView = (TextView) findViewById(R.id.ready_host);
 		youselfView.setText(app.tag);
-		TextView otherView = (TextView) findViewById(R.id.other);
+		TextView otherView = (TextView) findViewById(R.id.ready_guest);
 		otherView.setText("玩家2");
 		
 		initServerHandler();

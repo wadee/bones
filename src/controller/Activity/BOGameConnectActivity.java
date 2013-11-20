@@ -68,7 +68,7 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 		 * 热点列表
 		 */
 		
-		listView = (ListView) findViewById(R.id.listHots);
+		listView = (ListView) findViewById(R.id.wifi_list);
 		listView.setOnItemClickListener(new OnItemClickListener(){
 
 			@Override
