@@ -172,6 +172,11 @@ public class BOGameConnectActivity extends BOActivityAbstract implements WifiBro
 	@Override
 	public boolean disPlayWifiConResult(boolean result, WifiInfo wifiInfo) {
 		// TODO Auto-generated method stub
+		
+		if(result == false){
+			Toast.makeText(BOGameConnectActivity.this, "连接热点失败", Toast.LENGTH_SHORT).show();
+			return true;
+		}
 		WifiHotM.setConnectStatu(false);
 		WifiHotM.unRegisterWifiStateBroadCast();
 		WifiHotM.unRegisterWifiConnectBroadCast();

@@ -17,7 +17,6 @@ public class BOGlobalConst {
 	//热点SSID后缀
 	public static String SUFFIX = "_bones";
 	
-	
 	public static int PORT = 12345;
 	
 }
